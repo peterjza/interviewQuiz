@@ -1,6 +1,6 @@
 <!-- app.component.html -->
 <div class="container">
-  <h4>Add customer</h4>
+  <h4>Add Question</h4>
   <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
     <!-- we will place our fields here -->
 
@@ -20,30 +20,30 @@
         <!-- address header, show remove button when more than one address available -->
         <div>
           <span>Answers {{i + 1}}</span>
-          <span *ngIf="myForm.controls.answers.controls.length > 2" (click)="removeAddress(i)">XX</span>
+          <span *ngIf="myForm.controls.answers.controls.length > 2" (click)="removeAnswer(i)">XX</span>
         </div>
 
         <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
         <div [formGroupName]="i">
-          <!--street-->
+          <!--answer-->
           <div>
             <label>answer</label>
-            <input type="text" formControlName="street">
-            <!--display error message if street is not valid-->
-            <small [hidden]="myForm.controls.answers.controls[i].controls.street.valid">
-                            Street is required
-                        </small>
+            <input type="text" formControlName="answer">
+            <!--display error message if answer is not valid-->
+            <small [hidden]="myForm.controls.answers.controls[i].controls.answer.valid">
+                            Answer is required
+            </small>
           </div>
           <!--postcode-->
           <div>
-            <label>postcode</label>
-            <input type="text" formControlName="postcode">
+            <label>Corret</label>
+            <input type="radio" formControlName="correct" name="correct" [checked]="i === 0" [value]="i">
           </div>
         </div>
       </div>
     </div>
     <div>
-      <a (click)="addAddress()" style="cursor: default"> Add another answer +</a>
+      <a (click)="addAnswer()" style="cursor: default"> Add another answer +</a>
     </div>
 
   <button type="submit" [disabled]="!myForm.valid">Submit</button>

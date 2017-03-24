@@ -32,16 +32,16 @@ export class AddQuestionComponent  implements OnInit {
     public initAnswer() {
         // initialize our address
         return this._fb.group({
-            street: ['', Validators.required],
-            postcode: ['']
+            answer: ['', Validators.required],
+            correct: ['']
         });
     }
-    public addAddress() {
+    public addAnswer() {
 
       const control = <FormArray>this.myForm.controls['answers'];
       control.push(this.initAnswer());
     }
-    public removeAddress(i: number) {
+    public removeAnswer(i: number) {
       const control = <FormArray>this.myForm.controls['answers'];
       control.removeAt(i);
     }
