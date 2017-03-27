@@ -1,52 +1,69 @@
-<!-- app.component.html -->
+
 <div class="container">
+
   <h4>Add Question</h4>
-  <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
-    <!-- we will place our fields here -->
+  
+<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
 
-    <!-- name -->
-    <div class="form-group">
-      <label>Question</label>
-      <input type="text" formControlName="question">
-      <!--display error message if name is not valid-->
-      <small *ngIf="!myForm.controls.question.valid" class="text-danger">
+  <div class="row">
+    <div class="col s12">
+        <div class="row">
+          <div class="input-field col s11 form-group">
+            <input id="question" type="text" formControlName="question">
+            <label for="question">Question</label>
+          </div>
+        <!--<small *ngIf="!myForm.controls.question.valid" class="text-danger">
                 question is required (minimum 5 characters).
-        </small>
-
-      <input type="text" formControlName="correctAnswer" [ngModel]="correctVal" [hidden]="true">
-        
-    </div>
-
-    <!-- list of answers -->
-    <div formArrayName="answers">
-      <div *ngFor="let address of myForm.controls.answers.controls; let i=index">
-        <!-- address header, show remove button when more than one address available -->
-        <div>
-          <span>Answers {{i + 1}}</span>
-          <span *ngIf="myForm.controls.answers.controls.length > 2" (click)="removeAnswer(i)">XX</span>
+        </small>-->
         </div>
 
-        <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
-        <div [formGroupName]="i">
-          <!--answer-->
-          <div>
-            <label>answer</label>
-            <input type="text" formControlName="answer">
-            <!--display error message if answer is not valid-->
-            <small [hidden]="myForm.controls.answers.controls[i].controls.answer.valid">
-                            Answer is required
-            </small>
+        <div>
+            <input type="text" formControlName="correctAnswer" [ngModel]="correctAnswerIdx" [hidden]="false">
+        </div>
 
-            <span href="#" (click)="setCorrectAnswer(i)">CORECT</span>
+        <div formArrayName="answers" class="row">
+          <div *ngFor="let address of myForm.controls.answers.controls; let i=index" class="answerRow clearfix">
+            
+            <div class="input-field col s10 form-group">
+              <!--<span>Answers {{i + 1}}</span>-->
+              <span *ngIf="myForm.controls.answers.controls.length > 2" (click)="removeAnswer(i)" class="remove"> 
+                  X
+                </span>
 
+            <div [formGroupName]="i">
+              <div>
+                <label>Answer</label>
+                <input type="text" formControlName="answer">
+                <small [hidden]="myForm.controls.answers.controls[i].controls.answer.valid">
+                      Answer is required
+                </small>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="input-field col s1 push-s1  form-group">
+                <span href="#" (click)="setCorrectAnswer(i)">
+                    <i class="material-icons dp48 isCorrect">done</i>
+                    <i class="material-icons dp48 isIncorret">highlight_off</i>
+                </span>
+          </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div>
-      <a (click)="addAnswer()" style="cursor: default"> Add another answer +</a>
+        <div class="row">
+          <div>
+            <a (click)="addAnswer()" style="cursor: default"> Add another answer +</a>
+          </div>
+        </div>
+        </div>   
+        <button class="btn waves-effect waves-light blue darken-3" type="submit" [disabled]="!myForm.valid">Submit
+            <i class="material-icons right">send</i>
+        </button>        
+            
     </div>
 
-  <button type="submit" [disabled]="!myForm.valid">Submit</button>
+    <div class="row">
+
+    </div>
 </form>
 </div>

@@ -209,7 +209,13 @@ module.exports = function (options) {
         filename: 'webpack-assets.json',
         prettyPrint: true
       }),
-
+      
+      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery',
+        "Hammer": "hammerjs/hammer"
+      }),
       /*
        * Plugin: ForkCheckerPlugin
        * Description: Do type checking in a separate process, so webpack don't need to wait.

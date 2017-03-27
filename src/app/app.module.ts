@@ -15,15 +15,20 @@ import { AddQuestionComponent } from './addQuestion';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 
+
 import '../styles/styles.scss';
+import '../styles/materialize.css';
 import '../styles/headings.css';
+
+import '../scripts/materialize.min.js';
+
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState
 ];
-
+ 
 type StoreType = {
   state: InternalStateType,
   restoreInputValues: () => void,

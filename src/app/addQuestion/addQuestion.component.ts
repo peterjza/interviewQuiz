@@ -8,7 +8,8 @@ import { Customer } from './customer.interface';
 
 @Component({
   selector: 'addQuestion',
-  templateUrl: './addQuestion.component.html'
+  templateUrl: './addQuestion.component.html',
+  styleUrls:  ['./addQuestion.component.css']
 })
 export class AddQuestionComponent  implements OnInit {
 
@@ -21,7 +22,6 @@ export class AddQuestionComponent  implements OnInit {
   ) {}
 
     public ngOnInit() {
-    this.correctAnswerIdx = 0;
     this.myForm = this._fb.group({
             question: ['', [Validators.required, Validators.minLength(5)]],
             correctAnswer: ['', [Validators.required]],
@@ -30,6 +30,11 @@ export class AddQuestionComponent  implements OnInit {
                 this.initAnswer(),
             ])
         });
+
+        var that = this;
+        setTimeout(function(){
+          that.setCorrectAnswer(0);
+        }, 100)
 
     }
     public initAnswer() {
@@ -45,10 +50,16 @@ export class AddQuestionComponent  implements OnInit {
     public removeAnswer(i: number) {
       const control = <FormArray>this.myForm.controls['answers'];
       control.removeAt(i);
+      if($('.answerRow').eq(i).hasClass){
+        this.setCorrectAnswer(0);
+      }
     }
-    public setCorrectAnswer(i) {
-      this.correctAnswerIdx = i;
 
+    public setCorrectAnswer(i) {
+      $('.active').removeClass('active');
+      $('.answerRow').eq(i).addClass('active');
+      this.correctAnswerIdx = i;
+      
     }
     public save(model: Customer) {
         // call API to save customer
