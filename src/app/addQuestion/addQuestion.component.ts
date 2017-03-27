@@ -50,14 +50,17 @@ export class AddQuestionComponent  implements OnInit {
     public removeAnswer(i: number) {
       const control = <FormArray>this.myForm.controls['answers'];
       control.removeAt(i);
-      if($('.answerRow').eq(i).hasClass){
-        this.setCorrectAnswer(0);
+      if(jQuery('.answerRow').eq(i).hasClass){
+        var that = this;
+        setTimeout(function(){
+          that.setCorrectAnswer(0);
+        }, 300)
       }
     }
 
     public setCorrectAnswer(i) {
-      $('.active').removeClass('active');
-      $('.answerRow').eq(i).addClass('active');
+      jQuery('.active').removeClass('active');
+      jQuery('.answerRow').eq(i).addClass('active');
       this.correctAnswerIdx = i;
       
     }
