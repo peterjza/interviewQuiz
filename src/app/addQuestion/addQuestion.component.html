@@ -12,6 +12,9 @@
       <small *ngIf="!myForm.controls.question.valid" class="text-danger">
                 question is required (minimum 5 characters).
         </small>
+
+      <input type="text" formControlName="correctAnswer" [ngModel]="correctVal" [hidden]="true">
+        
     </div>
 
     <!-- list of answers -->
@@ -33,11 +36,9 @@
             <small [hidden]="myForm.controls.answers.controls[i].controls.answer.valid">
                             Answer is required
             </small>
-          </div>
-          <!--postcode-->
-          <div>
-            <label>Corret</label>
-            <input type="radio" formControlName="correct" name="correct" [checked]="i === 0" [value]="i">
+
+            <span href="#" (click)="setCorrectAnswer(i)">CORECT</span>
+
           </div>
         </div>
       </div>
