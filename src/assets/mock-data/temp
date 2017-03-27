@@ -1,0 +1,25 @@
+{
+  "question": {
+    "id": 1,
+    "category": 2,
+    "difficulty": 3,
+    "question_body": "sample string 4",
+    "approved": true,
+    "createdOn": "2017-03-27T17:19:36.2834727+02:00",
+    "createdBy": 7
+  },
+  "answers": [
+    {
+      "id": 1,
+      "questionId": 2,
+      "answer": "sample string 3",
+      "isCorrect": true
+    },
+    {
+      "id": 1,
+      "questionId": 2,
+      "answer": "sample string 3",
+      "isCorrect": true
+    }
+  ]
+}
