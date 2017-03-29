@@ -1,0 +1,37 @@
+span.remove{
+    position: absolute;
+    top:0;
+    right:0;
+    font-size: 15px;
+    vertical-align: top;
+    cursor: pointer;
+    color: #c5c5c5;
+}
+
+i.isCorrect{
+        color: #26a69a;
+    cursor: pointer;
+}
+i.isIncorret{
+    color: #ee6e73;
+    cursor: pointer;
+}
+
+.answerRow .isIncorret{
+    display: block
+}
+.answerRow .isCorrect{
+    display: none
+}
+.answerRow.active i.isCorrect {
+    display: block;
+
+}
+
+.answerRow.active i.isIncorret {
+    display: none
+}
+
+.answerRow.active input[type=text] {
+    border-bottom: #26a69a 1px solid;
+}
