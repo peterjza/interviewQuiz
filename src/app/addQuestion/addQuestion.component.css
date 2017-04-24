@@ -23,15 +23,15 @@ i.isIncorret{
 .answerRow .isCorrect{
     display: none
 }
-.answerRow.active i.isCorrect {
+.answerRow.selected i.isCorrect {
     display: block;
 
 }
 
-.answerRow.active i.isIncorret {
+.answerRow.selected i.isIncorret {
     display: none
 }
 
-.answerRow.active input[type=text] {
+.answerRow.selected input[type=text] {
     border-bottom: #26a69a 1px solid;
 }

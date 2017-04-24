@@ -32,12 +32,11 @@
 
             <div [formGroupName]="i">
               <div>
+                <div [hidden]="myForm.controls.answers.controls[i].controls.answer.valid">
+                      Answer is required
+                </div>
                 <label>Answer</label>
                 <input type="text" formControlName="answer">
-                <small [hidden]="myForm.controls.answers.controls[i].controls.answer.valid">
-                      Answer is required
-                </small>
-
 
               </div>
             </div>

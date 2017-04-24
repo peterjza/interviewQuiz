@@ -59,8 +59,8 @@ export class AddQuestionComponent  implements OnInit {
     }
 
     public setCorrectAnswer(i) {
-      jQuery('.active').removeClass('active');
-      jQuery('.answerRow').eq(i).addClass('active');
+      jQuery('.selected').removeClass('selected');
+      jQuery('.answerRow').eq(i).addClass('selected');
       this.correctAnswerIdx = i;
       
     }
